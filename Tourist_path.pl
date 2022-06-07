@@ -44,7 +44,8 @@ travel(Origin, Destination, R) :-
 
 % Determine whether you have reached the destination
 
-path(Destination, Destination, R, R).
+path(Destination, Destination, R, R):-
+	reverse_print_stack(R).
 
 % Determine whether you have visited the adjacent tourist places
 % If not visited, add to the list of visited tourist places
@@ -55,6 +56,15 @@ path(Actual, Destination, Visited_List, R) :-
 	not(member_stack(Next, Visited_List)),
 	stack(Next, Visited_List, Updated_list),
 	path(Next, Destination, Updated_list, R), !.
+
+
+reverse_print_stack(S) :-
+	empty_stack(S).
+
+reverse_print_stack(S) :-
+	stack(E, Rest, S), %pop
+	reverse_print_stack(Rest),
+	write(E), nl.
 
 
 % testTravel that runs 3 cases
