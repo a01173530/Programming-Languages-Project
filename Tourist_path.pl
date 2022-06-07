@@ -1,3 +1,6 @@
+% A01173530
+% Adrián Torres Hernández
+
 road(soriano, bernal).
 road(bernal, soriano).
 road(soriano, queretaro).
@@ -12,17 +15,19 @@ road(cadereyta, ezequiel).
 road(ezequiel, cadereyta).
 road(ezequiel, tequisquiapan).
 road(tequisquiapan, ezequiel).
-road(tequisquiapan, sanjuan).
-road(sanjuan, tequisquiapan).
-road(sanjuan, amealco).
-road(amealco, sanjuan).
-road(sanjuan, mexico).
-road(mexico, sanjuan).
+road(tequisquiapan, san_juan).
+road(san_juan, tequisquiapan).
+road(san_juan, amealco).
+road(amealco, san_juan).
+road(san_juan, mexico).
+road(mexico, san_juan).
 
 % Stack of visited tourist places
+
 empty_stack([]).
 
 % Determine whether the top is in the stack
+
 member_stack(Top, Body):-
     member(Top, Body).
 
@@ -51,7 +56,10 @@ path(Actual, Destination, Visited_List, R) :-
 	stack(Next, Visited_List, Updated_list),
 	path(Next, Destination, Updated_list, R), !.
 
+
+% testTravel that runs 3 cases
+
 testTravel(X,Y,Z):-
-    travel(bernal, mexico, X),	% X = [mexico, sanjuan, tequisquiapan, ezequiel, cadereyta, bernal],
+    travel(bernal, mexico, X),	% X = [mexico, san_juan, tequisquiapan, ezequiel, cadereyta, bernal],
     travel(soriano, jauregui, Y),		% Y = [jauregui, queretaro, bernal, soriano],
-    travel(mexico , ezequiel, Z).		% Z = [ezequiel, tequisquiapan, sanjuan, mexico]
+    travel(mexico , ezequiel, Z).		% Z = [ezequiel, tequisquiapan, san_juan, mexico]

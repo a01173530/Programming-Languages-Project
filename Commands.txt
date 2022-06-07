@@ -1,0 +1,8 @@
+
+// To Access the folder and the file
+
+consult('C:\\Users\\Adrian Torres\\Programming-Languages-Project\\Tourist_path.pl').
+
+// To see some test 
+
+testTravel(X,Y,Z).
